@@ -1,0 +1,47 @@
+MANUAL WINDOWS FIREWALL CONFIGURATION GUIDE
+=========================================
+
+If you're having trouble running the automated scripts, follow these manual steps:
+
+1. Open Windows Defender Firewall:
+   - Press Windows + R
+   - Type "wf.msc" and press Enter
+   - Click "Yes" if prompted by User Account Control
+
+2. Create a new Inbound Rule:
+   - In the left panel, right-click on "Inbound Rules"
+   - Select "New Rule..."
+   - Select "Program" and click "Next"
+   - Select "This program path:" and browse to your Python executable
+     (Typically located at C:\Users\[YourUsername]\AppData\Local\Programs\Python\Python3x\python.exe
+      or C:\Python3x\python.exe)
+   - Click "Next"
+   - Select "Allow the connection" and click "Next"
+   - Keep all network types selected and click "Next"
+   - Name the rule "Flask Web Server" and click "Finish"
+
+3. Create a new Outbound Rule:
+   - In the left panel, right-click on "Outbound Rules"
+   - Select "New Rule..."
+   - Select "Program" and click "Next"
+   - Select "This program path:" and browse to the same Python executable
+   - Click "Next"
+   - Select "Allow the connection" and click "Next"
+   - Keep all network types selected and click "Next"
+   - Name the rule "Flask Web Server Outbound" and click "Finish"
+
+4. Alternative Method (Temporary):
+   - Open Windows Security
+   - Click on "Firewall & Network Protection"
+   - Click on "Domain Network", "Private Network", and "Public Network"
+   - Turn off Windows Defender Firewall temporarily
+   - NOTE: Only do this for testing and turn it back on afterward
+
+5. After configuring the firewall:
+   - Run the Flask application: python run_web_app.py
+   - Try accessing: http://localhost:5000
+
+If you still have issues:
+1. Check if your antivirus is blocking the connection
+2. Try using a different port (e.g., 8080)
+3. Make sure no other application is using port 5000 
